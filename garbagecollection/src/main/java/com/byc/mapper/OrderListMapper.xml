@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byc.mapper.OrderListMapper">
+    <insert id="addOrder" parameterType="com.byc.bean.OrderList">
+        insert into orderList values (#{id},#{payment},#{address},#{creationTime},#{endTime},#{userid},#{cycleid},#{orderStatus})
+    </insert>
+    <select id="selectOrderById"  resultType="com.byc.bean.OrderList">
+        select * from orderList where id=#{id}
+    </select>
+    <select id="selectOrderByUserId" resultType="com.byc.bean.OrderList">
+         select * from orderList where userid=#{userid}
+    </select>
+    <select id="selectOrderByCycleId" resultType="com.byc.bean.OrderList">
+        select * from orderList where cycleId=#{cycleid}
+    </select>
+    <insert id="generateOrder">
+        insert into orderList(id,payment,address,creationTime,userid,orderStatus) values (#{id},#{payment},#{address},#{creationTime},#{userid},#{orderStatus})
+    </insert>
+    <select id="getOrderInfoByOrderStatus" resultType="com.byc.bean.OrderList">
+        select * from orderList where orderStatus = #{orderStatus}
+    </select>
+    <update id="changeOrderStatus">
+        update orderList set orderStatus = 1,endTime = #{endTime},cycleid = #{cycleid} ,orderStatus=#{orderStatus} where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,100 @@
+import Vue from 'vue'
+import {
+  Form,
+  FormItem,
+  Message,
+  Button,
+  Input,
+  Header,
+  Footer,
+  Main,
+  Container,
+  Link,
+  Tabs,
+  TabPane,
+  Radio,
+  Step,
+  Steps,
+  Menu,
+  MenuItem,
+  Carousel,
+  CarouselItem,
+  Dialog,
+  Breadcrumb,
+  BreadcrumbItem,
+  Table,
+  TableColumn,
+  InputNumber,
+  MessageBox,
+  Divider,
+  Option,
+  Select,
+  Card,
+  Pagination,
+  Tooltip,
+  Aside,
+  MenuItemGroup,
+  Submenu,
+  Row,
+  Col,
+  Tag,
+  Image,
+  Upload,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Switch,
+  Autocomplete,
+  Popconfirm,
+  Loading
+} from 'element-ui'
+
+Vue.use(Popconfirm)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Header)
+Vue.use(Main)
+Vue.use(Footer)
+Vue.use(Container)
+Vue.use(Link)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Radio)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Menu)
+Vue.use(MenuItem)
+Vue.use(Carousel)
+Vue.use(CarouselItem)
+Vue.use(Dialog)
+Vue.use(BreadcrumbItem)
+Vue.use(Breadcrumb)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(InputNumber)
+Vue.use(Divider)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Card)
+Vue.use(Pagination)
+Vue.use(Tooltip)
+Vue.use(Aside)
+Vue.use(MenuItemGroup)
+Vue.use(Submenu)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Tag)
+Vue.use(Image)
+Vue.use(Upload)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(Switch)
+Vue.use(Autocomplete)
+Vue.use(Loading)
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$alert = MessageBox.alert

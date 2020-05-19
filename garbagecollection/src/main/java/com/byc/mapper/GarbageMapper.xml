@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byc.mapper.GarbageMapper">
+    <insert id="addGarbage" parameterType="com.byc.bean.Garbage">
+        insert into garbage values (#{id},#{gName},#{gType},#{gPrice},#{gDesc},#{isCycle},#{image})
+    </insert>
+    <update id="updateGarbage" parameterType="com.byc.bean.Garbage">
+        update garbage set gType=#{gType},gPrice=#{gPrice},gDesc=#{gDesc},isCycle=#{isCycle} where gName=#{gName}
+    </update>
+    <delete id="deleteGarbage" parameterType="String">
+        delete from garbage where gname=#{gName}
+    </delete>
+    <delete id="deleteGarbageById">
+        delete from garbage where id=#{id}
+    </delete>
+    <select id="getGarbageByName" parameterType="String" resultType="com.byc.bean.Garbage">
+        select * from garbage where gname = #{gName}
+    </select>
+    <select id="getGarbageByFuzzyName" parameterType="String" resultType="com.byc.bean.Garbage">
+        select * from garbage where gname like "%"#{gName}"%"
+    </select>
+    <select id="getGarbageList" resultType="com.byc.bean.Garbage">
+        select * from garbage
+    </select>
+    <select id="getGarbageListByisCycle" resultType="com.byc.bean.Garbage">
+        select * from garbage where isCycle=#{isCycle}
+    </select>
+    <select id="getGarbageListByType" resultType="com.byc.bean.Garbage">
+        select * from garbage where gType=#{gType}
+    </select>
+    <select id="getPartGarbageList" resultType="com.byc.bean.Garbage">
+        select * from garbage limit 8
+    </select>
+    <update id="updateGarbageNameById">
+        update garbage set gName=#{param2} where id=#{param1}
+    </update>
+    <update id="updateGarbagePrice">
+        update garbage set gPrice=#{param2} where id=#{param1}
+    </update>
+    <update id="updateGarbageInfo">
+        update garbage set gType=#{gType},gPrice=#{gPrice},gDesc=#{gDesc} where id=#{id}
+    </update>
+    <update id="uploadImage">
+        update garbage set image=#{image} where gName=#{gName}
+    </update>
+</mapper>

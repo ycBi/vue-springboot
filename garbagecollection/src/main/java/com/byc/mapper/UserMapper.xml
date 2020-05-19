@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byc.mapper.UserMapper">
+<!--    添加新的用户-->
+    <insert id="addNewUser" parameterType="com.byc.bean.User">
+        INSERT INTO USER VALUES (#{id},#{uname},#{upassword},#{role},#{telphone},#{userStatus},#{email},#{registerTime},#{address},#{money})
+    </insert>
+<!--    更新用户的密码或者电话信息（用户名不准修改）-->
+    <update id="updateUser" parameterType="com.byc.bean.User">
+        UPDATE USER SET upassword=#{upassword},telphone=#{telphone}  where uname=#{uname}
+    </update>
+<!--    根据用户名查找信息-->
+    <select id="getUserByName" parameterType="String" resultType="com.byc.bean.User">
+        select * from USER  where uname=#{uname}
+    </select>
+<!--    查找所有用户信息-->
+    <select id="getUserList" resultType="com.byc.bean.User">
+        select * from user
+    </select>
+<!--根据用户名来判断是否存在该用户-->
+    <select id="checkUser" parameterType="String" resultType="int">
+        select count(1) from user where uname=#{uname}
+    </select>
+
+    <select id="checkUserByPassword" resultType="com.byc.bean.User">
+        select * from user where uname=#{param1} and upassword=#{param2}
+    </select>
+    
+    <update id="updateUserStatus" >
+        update user set userStatus = #{param2} where id=#{param1}
+    </update>
+    
+    <select id="getPartUserInfo" resultType="com.byc.bean.User">
+        select * from user limit 15
+    </select>
+
+    <delete id="deleteUser">
+        delete from  user where uname=#{uname}
+    </delete>
+    <update id="improveInfo">
+    	update  user  set telphone=#{telphone},email=#{email},address=#{address} where uname=#{uname}
+    </update>
+    <select id="getUserInfoById" resultType="com.byc.bean.User">
+        select * from user where id =#{id};
+    </select>
+    <update id="updateUserMoney">
+        update user set money = #{money} where id = #{id}
+    </update>
+</mapper>
